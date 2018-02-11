@@ -74,14 +74,15 @@ results_list = make_request_using_cache(baseurl, params)
 file = open('tweet.json', 'w')
 file.write(json.dumps(results_list, indent=4))
 
+
 #Code for Part 2:Analyze Tweets
 word_list = []
 stop_word_list = ["http", "https", "RT"]
 for tweet in results_list:
-	tokens = nltk.word_tokenize(tweet["text"])
-	for token in tokens:
-		if token[0] in list(string.ascii_letters) and token not in stop_word_list:
-			word_list.append(token)
+    tokens = nltk.word_tokenize(tweet["text"])
+    for token in tokens:
+        if token[0] in list(string.ascii_letters) and token not in stop_word_list:
+            word_list.append(token)
 
 wordCount_diction = {}
 for word in word_list:
@@ -89,6 +90,7 @@ for word in word_list:
 		wordCount_diction[word.lower()] += 1 
 	else:
 		wordCount_diction[word.lower()] = 1
+
 
 print("USER: " + username + "  TWEETS ANALYZED: " + num_tweets)
 print("5 MOST FREQUENT WORDS: ")
